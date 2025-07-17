@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -52,4 +53,7 @@ public class UserController {
     public List<User> allUser() {
         return userService.readAllUser();
     }
+
+    @GetMapping("/users/{id}")
+    public Optional<User> getUser(@PathVariable Long id) { return userService.findById(id); }
 }
